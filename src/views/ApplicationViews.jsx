@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
 import { Welcome } from "../components/welcome/Welcome";
 import { NavBar } from "../components/nav/NavBar";
-import { TheVault } from "../components/theVault/TheVault";
+import { TheVault } from "../components/miniatures/TheVault";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
