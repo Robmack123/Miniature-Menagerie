@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { getAllMiniatures } from "../../services/miniatureService";
 
-export const TheVault = () => {
+export const TheVault = ({ currentUser }) => {
   const [miniatures, setMiniatures] = useState([]);
+
+  const userMiniatures = miniatures.filter((miniature) => {
+    return miniature.userId === currentUser.id;
+  });
 
   useEffect(() => {
     getAllMiniatures().then((miniArray) => {
@@ -13,7 +17,7 @@ export const TheVault = () => {
 
   return (
     <div>
-      {miniatures.map((miniature) => (
+      {userMiniatures.map((miniature) => (
         <div key={miniature.id}>
           <h1>{miniature.name}</h1>
           <div>
