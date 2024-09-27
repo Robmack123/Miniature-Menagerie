@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllMiniatures } from "../../services/miniatureService";
+import { Miniature } from "./Miniature";
 
 export const TheVault = ({ currentUser }) => {
   const [miniatures, setMiniatures] = useState([]);
@@ -18,16 +19,7 @@ export const TheVault = ({ currentUser }) => {
   return (
     <div>
       {userMiniatures.map((miniature) => (
-        <div key={miniature.id}>
-          <h1>{miniature.name}</h1>
-          <div>
-            <img src={miniature.img_url} alt={miniature.name} />
-          </div>
-          <div>
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </div>
+        <Miniature key={miniature.id} miniature={miniature} />
       ))}
     </div>
   );
