@@ -3,6 +3,7 @@ import { Outlet, Route, Routes } from "react-router-dom";
 import { Welcome } from "../components/welcome/Welcome";
 import { NavBar } from "../components/nav/NavBar";
 import { TheVault } from "../components/miniatures/TheVault";
+import { Banner } from "../components/banner/Banner";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -20,6 +21,7 @@ export const ApplicationViews = () => {
         path="/"
         element={
           <>
+            <Banner />
             <NavBar />
             <Outlet />
           </>
