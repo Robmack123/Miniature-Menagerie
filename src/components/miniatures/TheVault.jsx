@@ -6,13 +6,17 @@ import { getAllClasses } from "../../services/classesService";
 import { ClassFilter } from "../filters/ClassFilter";
 import { getAllSpecies } from "../../services/speciesService";
 import { SpeciesFilter } from "../filters/SpeciesFilter";
+import { getAllSizes } from "../../services/sizesService";
+import { SizeFilter } from "../filters/SizeFilter";
 
 export const TheVault = ({ currentUser }) => {
   const [miniatures, setMiniatures] = useState([]);
   const [classes, setClasses] = useState([]);
   const [species, setSpecies] = useState([]);
+  const [sizes, setSizes] = useState([]);
   const [selectedClass, setSelectedClass] = useState("All");
   const [selectedSpecies, setSelectedSpecies] = useState("All");
+  const [selectedSize, setSelectedSize] = useState("All");
 
   const filteredMiniatures = miniatures.filter((miniature) => {
     return (
@@ -20,7 +24,8 @@ export const TheVault = ({ currentUser }) => {
       (selectedClass === "All" ||
         miniature.classId === parseInt(selectedClass)) &&
       (selectedSpecies === "All" ||
-        miniature.speciesId === parseInt(selectedSpecies))
+        miniature.speciesId === parseInt(selectedSpecies)) &&
+      (selectedSize === "All" || miniature.sizeId === parseInt(selectedSize))
     );
   });
 
@@ -31,6 +36,17 @@ export const TheVault = ({ currentUser }) => {
   const handleSpeciesChange = (event) => {
     setSelectedSpecies(event.target.value);
   };
+
+  const handleSizeChange = (event) => {
+    setSelectedSize(event.target.value);
+  };
+
+  useEffect(() => {
+    getAllSizes().then((sizesArray) => {
+      setSizes(sizesArray);
+      console.log("size set");
+    });
+  }, []);
 
   useEffect(() => {
     getAllSpecies().then((speciesArray) => {
@@ -55,6 +71,13 @@ export const TheVault = ({ currentUser }) => {
   return (
     <div>
       <div className="filter-container">
+        <div className="filter-bar">
+          <SizeFilter
+            handleSizeChange={handleSizeChange}
+            selectedSize={selectedSize}
+            sizes={sizes}
+          />
+        </div>
         <div className="filter-bar">
           <SpeciesFilter
             handleSpeciesChange={handleSpeciesChange}
