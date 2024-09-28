@@ -9,6 +9,7 @@ import { getAllSizes } from "../../services/sizesService";
 import { SizeFilter } from "../filters/SizeFilter";
 import "./miniatures.css";
 import "../filters/filter.css";
+import { PaintedFilter } from "../filters/PaintedFilter";
 
 export const TheVault = ({ currentUser }) => {
   const [miniatures, setMiniatures] = useState([]);
@@ -18,6 +19,7 @@ export const TheVault = ({ currentUser }) => {
   const [selectedClass, setSelectedClass] = useState("All");
   const [selectedSpecies, setSelectedSpecies] = useState("All");
   const [selectedSize, setSelectedSize] = useState("All");
+  const [showPainted, setShowPainted] = useState(false);
 
   const filteredMiniatures = miniatures.filter((miniature) => {
     return (
@@ -26,7 +28,8 @@ export const TheVault = ({ currentUser }) => {
         miniature.classId === parseInt(selectedClass)) &&
       (selectedSpecies === "All" ||
         miniature.speciesId === parseInt(selectedSpecies)) &&
-      (selectedSize === "All" || miniature.sizeId === parseInt(selectedSize))
+      (selectedSize === "All" || miniature.sizeId === parseInt(selectedSize)) &&
+      (!showPainted || miniature.painted === false)
     );
   });
 
@@ -40,6 +43,10 @@ export const TheVault = ({ currentUser }) => {
 
   const handleSizeChange = (event) => {
     setSelectedSize(event.target.value);
+  };
+
+  const togglePaintedFilter = () => {
+    setShowPainted((prev) => !prev);
   };
 
   useEffect(() => {
@@ -91,6 +98,12 @@ export const TheVault = ({ currentUser }) => {
             handleClassChange={handleClassChange}
             selectedClass={selectedClass}
             classes={classes}
+          />
+        </div>
+        <div className="filter-bar">
+          <PaintedFilter
+            showPainted={showPainted}
+            togglePaintedFilter={togglePaintedFilter}
           />
         </div>
       </div>
