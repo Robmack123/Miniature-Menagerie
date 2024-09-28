@@ -7,8 +7,8 @@ export const Miniature = ({ miniature }) => {
       <div>
         <img src={miniature.img_url} alt={miniature.name} />
       </div>
-      <div>
-        <button>Edit</button>
+      <div className="btn-container">
+        <button className="btn">Edit</button>
         <button>Delete</button>
       </div>
     </div>
