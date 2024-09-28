@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { getAllMiniatures } from "../../services/miniatureService";
 import { Miniature } from "./Miniature";
-import "./miniatures.css";
 import { getAllClasses } from "../../services/classesService";
 import { ClassFilter } from "../filters/ClassFilter";
 import { getAllSpecies } from "../../services/speciesService";
 import { SpeciesFilter } from "../filters/SpeciesFilter";
 import { getAllSizes } from "../../services/sizesService";
 import { SizeFilter } from "../filters/SizeFilter";
+import "./miniatures.css";
+import "../filters/filter.css";
 
 export const TheVault = ({ currentUser }) => {
   const [miniatures, setMiniatures] = useState([]);
