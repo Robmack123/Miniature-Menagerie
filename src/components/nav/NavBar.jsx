@@ -11,6 +11,11 @@ export const NavBar = () => {
           The Vault
         </Link>
       </li>
+      <li className="navbar-item">
+        <Link className="navbar-link" to="/add">
+          Add a Miniature
+        </Link>
+      </li>
       {localStorage.getItem("mini_user") ? (
         <li className="navbar-item navbar-logout">
           <Link

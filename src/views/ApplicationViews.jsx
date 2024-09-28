@@ -29,6 +29,7 @@ export const ApplicationViews = () => {
       >
         <Route index element={<Welcome />} />
         <Route path="vault" element={<TheVault currentUser={currentUser} />} />
+        <Route path="add" element={<>Add a miniature</>} />
       </Route>
     </Routes>
   );
