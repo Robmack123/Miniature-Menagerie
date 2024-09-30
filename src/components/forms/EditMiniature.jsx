@@ -185,7 +185,15 @@ export const EditMiniature = () => {
         </fieldset>
       </div>
       <div>
-        <div>{img && <img src={img} alt={name} />}</div>
+        <div>
+          {img && (
+            <img
+              src={img}
+              alt={name}
+              style={{ width: "200px", height: "auto" }}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
