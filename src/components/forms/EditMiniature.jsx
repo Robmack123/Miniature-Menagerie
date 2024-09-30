@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
-import { getMiniatureById } from "../../services/miniatureService";
-import { useParams } from "react-router-dom";
+import {
+  editMiniatureObj,
+  getMiniatureById,
+} from "../../services/miniatureService";
+import { useNavigate, useParams } from "react-router-dom";
 import { getAllClasses } from "../../services/classesService";
 import { getAllSpecies } from "../../services/speciesService";
 import { getAllSizes } from "../../services/sizesService";
@@ -19,6 +22,8 @@ export const EditMiniature = () => {
   const [selectedSize, setSelectedSize] = useState("All");
   const { miniatureId } = useParams();
 
+  const navigate = useNavigate();
+
   const handleClassChange = (event) => {
     setSelectedClass(event.target.value);
   };
@@ -36,8 +41,8 @@ export const EditMiniature = () => {
       setCurrentMiniature(miniature);
       setEditedMiniature(miniature);
 
-      setSelectedClass(miniature.classId); // Assuming classId corresponds to the class
-      setSelectedSpecies(miniature.speciesId); // Assuming speciesId corresponds to the species
+      setSelectedClass(miniature.classId);
+      setSelectedSpecies(miniature.speciesId);
       setSelectedSize(miniature.sizeId);
     });
   }, [miniatureId]);
@@ -77,6 +82,21 @@ export const EditMiniature = () => {
     setEditedMiniature(miniatureCopy);
   }, [currentMiniature]);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const updatedMiniature = {
+      ...editedMiniature,
+      classId: parseInt(selectedClass),
+      speciesId: parseInt(selectedSpecies),
+      sizeId: parseInt(selectedSize),
+    };
+
+    editMiniatureObj(updatedMiniature).then(() => {
+      navigate(`/vault/${miniatureId}`);
+    });
+  };
+
   return (
     <div>
       <fieldset>
@@ -104,6 +124,11 @@ export const EditMiniature = () => {
             selectedClass={selectedClass}
             classes={classes}
           />
+        </div>
+      </fieldset>
+      <fieldset>
+        <div>
+          <button onClick={handleSubmit}>Submit</button>
         </div>
       </fieldset>
     </div>

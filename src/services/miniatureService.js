@@ -18,7 +18,7 @@ export const addNewMiniature = (miniature) => {
   });
 };
 
-export const editMiniature = (miniature) => {
+export const editMiniatureObj = (miniature) => {
   return fetch(`http://localhost:8088/miniatures/${miniature.id}`, {
     method: "PUT",
     headers: {
