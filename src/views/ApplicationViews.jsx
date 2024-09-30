@@ -5,6 +5,7 @@ import { NavBar } from "../components/nav/NavBar";
 import { TheVault } from "../components/miniatures/TheVault";
 import { Banner } from "../components/banner/Banner";
 import { MiniatureDetails } from "../components/miniatures/MiniatureDetails";
+import { EditMiniature } from "../components/forms/EditMiniature";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -32,6 +33,7 @@ export const ApplicationViews = () => {
         <Route path="vault">
           <Route index element={<TheVault currentUser={currentUser} />} />
           <Route path=":miniatureId" element={<MiniatureDetails />} />
+          <Route path=":miniatureId/edit" element={<EditMiniature />} />
         </Route>
       </Route>
     </Routes>
