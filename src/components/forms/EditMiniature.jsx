@@ -22,6 +22,7 @@ export const EditMiniature = () => {
   const [selectedSpecies, setSelectedSpecies] = useState("All");
   const [selectedSize, setSelectedSize] = useState("All");
   const [painted, setPainted] = useState(false);
+  const [img, setImg] = useState("");
   const [dateAcquired, setDateAcquired] = useState("");
   const { miniatureId } = useParams();
 
@@ -44,11 +45,12 @@ export const EditMiniature = () => {
       setCurrentMiniature(miniature);
       setEditedMiniature(miniature);
       setName(miniature.name);
-      setPainted(miniature.painted);
-      setDateAcquired(miniature.dateAcquired);
       setSelectedClass(miniature.classId);
       setSelectedSpecies(miniature.speciesId);
       setSelectedSize(miniature.sizeId);
+      setPainted(miniature.painted);
+      setDateAcquired(miniature.dateAcquired);
+      setImg(miniature.img_url);
     });
   }, [miniatureId]);
 
@@ -98,6 +100,7 @@ export const EditMiniature = () => {
       sizeId: parseInt(selectedSize),
       dateAcquired: dateAcquired,
       painted: painted,
+      img_url: img,
     };
 
     editMiniatureObj(updatedMiniature).then(() => {
@@ -166,12 +169,24 @@ export const EditMiniature = () => {
           </label>
         </fieldset>
         <fieldset>
+          <label>
+            Image Url:
+            <input
+              type="text"
+              value={img}
+              onChange={(event) => setImg(event.target.value)}
+            />
+          </label>
+        </fieldset>
+        <fieldset>
           <div>
             <button onClick={handleSubmit}>Submit</button>
           </div>
         </fieldset>
       </div>
-      <div></div>
+      <div>
+        <div>{img && <img src={img} alt={name} />}</div>
+      </div>
     </div>
   );
 };
