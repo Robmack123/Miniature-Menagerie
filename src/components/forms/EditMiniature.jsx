@@ -14,12 +14,15 @@ import { SpeciesFilter } from "../filters/SpeciesFilter";
 export const EditMiniature = () => {
   const [currentMiniature, setCurrentMiniature] = useState({});
   const [editedMiniature, setEditedMiniature] = useState({});
+  const [name, setName] = useState("");
   const [classes, setClasses] = useState([]);
   const [species, setSpecies] = useState([]);
   const [sizes, setSizes] = useState([]);
   const [selectedClass, setSelectedClass] = useState("All");
   const [selectedSpecies, setSelectedSpecies] = useState("All");
   const [selectedSize, setSelectedSize] = useState("All");
+  const [painted, setPainted] = useState(false);
+  const [dateAcquired, setDateAcquired] = useState("");
   const { miniatureId } = useParams();
 
   const navigate = useNavigate();
@@ -40,7 +43,9 @@ export const EditMiniature = () => {
     getMiniatureById(miniatureId).then((miniature) => {
       setCurrentMiniature(miniature);
       setEditedMiniature(miniature);
-
+      setName(miniature.name);
+      setPainted(miniature.painted);
+      setDateAcquired(miniature.dateAcquired);
       setSelectedClass(miniature.classId);
       setSelectedSpecies(miniature.speciesId);
       setSelectedSize(miniature.sizeId);
@@ -87,9 +92,12 @@ export const EditMiniature = () => {
 
     const updatedMiniature = {
       ...editedMiniature,
+      name: name,
       classId: parseInt(selectedClass),
       speciesId: parseInt(selectedSpecies),
       sizeId: parseInt(selectedSize),
+      dateAcquired: dateAcquired,
+      painted: painted,
     };
 
     editMiniatureObj(updatedMiniature).then(() => {
@@ -99,38 +107,71 @@ export const EditMiniature = () => {
 
   return (
     <div>
-      <fieldset>
-        <div className="filter-bar">
-          <SizeFilter
-            handleSizeChange={handleSizeChange}
-            selectedSize={selectedSize}
-            sizes={sizes}
-          />
-        </div>
-      </fieldset>
-      <fieldset>
-        <div className="filter-bar">
-          <SpeciesFilter
-            handleSpeciesChange={handleSpeciesChange}
-            selectedSpecies={selectedSpecies}
-            species={species}
-          />
-        </div>
-      </fieldset>
-      <fieldset>
-        <div className="filter-bar">
-          <ClassFilter
-            handleClassChange={handleClassChange}
-            selectedClass={selectedClass}
-            classes={classes}
-          />
-        </div>
-      </fieldset>
-      <fieldset>
-        <div>
-          <button onClick={handleSubmit}>Submit</button>
-        </div>
-      </fieldset>
+      <div className="Edit field">
+        <fieldset>
+          <label>
+            Name:{" "}
+            <input
+              type="text"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+            />
+          </label>
+        </fieldset>
+        <fieldset>
+          <div className="filter-bar">
+            <SizeFilter
+              handleSizeChange={handleSizeChange}
+              selectedSize={selectedSize}
+              sizes={sizes}
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="filter-bar">
+            <SpeciesFilter
+              handleSpeciesChange={handleSpeciesChange}
+              selectedSpecies={selectedSpecies}
+              species={species}
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="filter-bar">
+            <ClassFilter
+              handleClassChange={handleClassChange}
+              selectedClass={selectedClass}
+              classes={classes}
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <label>
+            Date Acquired:
+            <input
+              type="date"
+              value={dateAcquired}
+              onChange={(event) => setDateAcquired(event.target.value)}
+            />
+          </label>
+        </fieldset>
+        <fieldset>
+          <label>
+            Painted:{" "}
+            <input
+              type="checkbox"
+              checked={painted}
+              onChange={(event) => setPainted(event.target.checked)}
+            />
+          </label>
+        </fieldset>
+        <fieldset>
+          <div>
+            <button onClick={handleSubmit}>Submit</button>
+          </div>
+        </fieldset>
+      </div>
+      <div></div>
     </div>
   );
 };
