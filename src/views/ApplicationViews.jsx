@@ -4,6 +4,7 @@ import { Welcome } from "../components/welcome/Welcome";
 import { NavBar } from "../components/nav/NavBar";
 import { TheVault } from "../components/miniatures/TheVault";
 import { Banner } from "../components/banner/Banner";
+import { MiniatureDetails } from "../components/miniatures/MiniatureDetails";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -28,8 +29,10 @@ export const ApplicationViews = () => {
         }
       >
         <Route index element={<Welcome />} />
-        <Route path="vault" element={<TheVault currentUser={currentUser} />} />
-        <Route path="add" element={<>Add a miniature</>} />
+        <Route path="vault">
+          <Route index element={<TheVault currentUser={currentUser} />} />
+          <Route path=":miniatureId" element={<MiniatureDetails />} />
+        </Route>
       </Route>
     </Routes>
   );
