@@ -1,0 +1,21 @@
+.details-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.miniature-wrapper {
+  margin-right: 500px;
+  margin-top: 100px;
+}
+
+.details-wrapper {
+  max-width: 400px;
+  margin-top: 100px;
+}
+
+.btn-container {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}

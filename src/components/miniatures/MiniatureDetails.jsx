@@ -5,6 +5,7 @@ import { Miniature } from "./Miniature";
 import { getSizeById } from "../../services/sizesService";
 import { getClassById } from "../../services/classesService";
 import { getSpeciesById } from "../../services/speciesService";
+import "./miniatureDetails.css";
 
 export const MiniatureDetails = () => {
   const [miniature, setMiniature] = useState({});
@@ -32,15 +33,15 @@ export const MiniatureDetails = () => {
   }, [miniatureId]);
 
   return (
-    <div>
-      <div>
+    <div className="details-container">
+      <div className="miniature-wrapper">
         <Miniature miniature={miniature} disableLink={true} />
+        <div className="btn-container">
+          <button className="btn">Edit</button>
+          <button>Delete</button>
+        </div>
       </div>
-      <div className="btn-container">
-        <button className="btn">Edit</button>
-        <button>Delete</button>
-      </div>
-      <div>
+      <div className="details-wrapper">
         <section>
           <h2>Class: {classObj}</h2>
           <h2>Species: {species}</h2>
