@@ -14,10 +14,6 @@ export const Miniature = ({ miniature, disableLink }) => {
           </Link>
         )}
       </div>
-      <div className="btn-container">
-        <button className="btn">Edit</button>
-        <button>Delete</button>
-      </div>
     </div>
   );
 };

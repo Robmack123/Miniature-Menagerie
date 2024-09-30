@@ -3,5 +3,7 @@ export const getAllClasses = () => {
 };
 
 export const getClassById = (classId) => {
-  return fetch(`http://localhost:8088/classes/${classId}`);
+  return fetch(`http://localhost:8088/classes/${classId}`).then((res) =>
+    res.json()
+  );
 };
