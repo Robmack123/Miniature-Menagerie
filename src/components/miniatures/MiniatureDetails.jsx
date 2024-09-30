@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getMiniatureById } from "../../services/miniatureService";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Miniature } from "./Miniature";
 import { getSizeById } from "../../services/sizesService";
 import { getClassById } from "../../services/classesService";
@@ -37,7 +37,9 @@ export const MiniatureDetails = () => {
       <div className="miniature-wrapper">
         <Miniature miniature={miniature} disableLink={true} />
         <div className="btn-container">
-          <button className="btn">Edit</button>
+          <Link to={`/vault/${miniature.id}/edit`}>
+            <button className="btn">Edit</button>
+          </Link>
           <button>Delete</button>
         </div>
       </div>
