@@ -6,6 +6,7 @@ import { TheVault } from "../components/miniatures/TheVault";
 import { Banner } from "../components/banner/Banner";
 import { MiniatureDetails } from "../components/miniatures/MiniatureDetails";
 import { EditMiniature } from "../components/forms/EditMiniature";
+import { AddANewMiniature } from "../components/forms/AddANewMiniature";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -35,6 +36,10 @@ export const ApplicationViews = () => {
           <Route path=":miniatureId" element={<MiniatureDetails />} />
           <Route path=":miniatureId/edit" element={<EditMiniature />} />
         </Route>
+        <Route
+          path="add"
+          element={<AddANewMiniature currentUser={currentUser} />}
+        />
       </Route>
     </Routes>
   );

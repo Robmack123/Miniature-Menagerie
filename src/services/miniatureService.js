@@ -15,7 +15,7 @@ export const addNewMiniature = (miniature) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(miniature),
-  });
+  }).then((res) => res.json());
 };
 
 export const editMiniatureObj = (miniature) => {

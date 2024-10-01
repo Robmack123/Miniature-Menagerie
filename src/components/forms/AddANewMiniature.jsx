@@ -1,20 +1,14 @@
 import { useEffect, useState } from "react";
-import {
-  editMiniatureObj,
-  getMiniatureById,
-} from "../../services/miniatureService";
-import { useNavigate, useParams } from "react-router-dom";
-import { getAllClasses } from "../../services/classesService";
-import { getAllSpecies } from "../../services/speciesService";
 import { getAllSizes } from "../../services/sizesService";
+import { getAllSpecies } from "../../services/speciesService";
+import { getAllClasses } from "../../services/classesService";
 import { SizeFilter } from "../filters/SizeFilter";
-import { ClassFilter } from "../filters/ClassFilter";
 import { SpeciesFilter } from "../filters/SpeciesFilter";
-import "./forms.css";
+import { ClassFilter } from "../filters/ClassFilter";
+import { addNewMiniature } from "../../services/miniatureService";
+import { useNavigate } from "react-router-dom";
 
-export const EditMiniature = () => {
-  const [currentMiniature, setCurrentMiniature] = useState({});
-  const [editedMiniature, setEditedMiniature] = useState({});
+export const AddANewMiniature = ({ currentUser }) => {
   const [name, setName] = useState("");
   const [classes, setClasses] = useState([]);
   const [species, setSpecies] = useState([]);
@@ -25,8 +19,6 @@ export const EditMiniature = () => {
   const [selectedClass, setSelectedClass] = useState("All");
   const [selectedSpecies, setSelectedSpecies] = useState("All");
   const [selectedSize, setSelectedSize] = useState("All");
-  const { miniatureId } = useParams();
-
   const navigate = useNavigate();
 
   const handleClassChange = (event) => {
@@ -40,20 +32,6 @@ export const EditMiniature = () => {
   const handleSizeChange = (event) => {
     setSelectedSize(event.target.value);
   };
-
-  useEffect(() => {
-    getMiniatureById(miniatureId).then((miniature) => {
-      setCurrentMiniature(miniature);
-      setEditedMiniature(miniature);
-      setName(miniature.name);
-      setSelectedClass(miniature.classId);
-      setSelectedSpecies(miniature.speciesId);
-      setSelectedSize(miniature.sizeId);
-      setPainted(miniature.painted);
-      setDateAcquired(miniature.dateAcquired);
-      setImg(miniature.img_url);
-    });
-  }, [miniatureId]);
 
   useEffect(() => {
     getAllSizes().then((sizesArray) => {
@@ -76,37 +54,30 @@ export const EditMiniature = () => {
     });
   }, []);
 
-  useEffect(() => {
-    const miniatureCopy = {
-      id: currentMiniature.id,
-      userId: currentMiniature.userId,
-      name: currentMiniature.name,
-      speciesId: currentMiniature.speciesId,
-      classId: currentMiniature.classId,
-      painted: currentMiniature.painted,
-      sizeId: currentMiniature.sizeId,
-      dateAcquired: currentMiniature.dateAcquired,
-      img_url: currentMiniature.img_url,
-    };
-    setEditedMiniature(miniatureCopy);
-  }, [currentMiniature]);
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const updatedMiniature = {
-      ...editedMiniature,
+    const miniatureToSubmit = {
+      userId: currentUser.id,
       name: name,
-      classId: parseInt(selectedClass),
       speciesId: parseInt(selectedSpecies),
+      classId: parseInt(selectedClass),
+      painted: painted,
       sizeId: parseInt(selectedSize),
       dateAcquired: dateAcquired,
-      painted: painted,
       img_url: img,
     };
 
-    editMiniatureObj(updatedMiniature).then(() => {
-      navigate(`/vault/${miniatureId}`);
+    addNewMiniature(miniatureToSubmit).then((newMiniature) => {
+      setName("");
+      setSelectedClass("All");
+      setSelectedSize("All");
+      setSelectedSpecies("All");
+      setPainted(false);
+      setImg("");
+      setDateAcquired("");
+
+      navigate(`/vault/${newMiniature.id}`);
     });
   };
 
@@ -189,7 +160,7 @@ export const EditMiniature = () => {
           </div>
         </fieldset>
       </div>
-      <div className="img-container">
+      {/* <div className="img-container">
         <div>
           {img && (
             <img
@@ -200,7 +171,7 @@ export const EditMiniature = () => {
             />
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
