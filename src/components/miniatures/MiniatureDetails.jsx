@@ -11,11 +11,14 @@ import { getSpeciesById } from "../../services/speciesService";
 import "./miniatureDetails.css";
 
 export const MiniatureDetails = () => {
+  // sets the miniature object that was clicked and then the properties that will be shown
   const [miniature, setMiniature] = useState({});
   const [classObj, setClassObj] = useState("");
   const [species, setSpecies] = useState("");
   const [size, setSize] = useState("");
+  // used to get the miniatureId from the url
   const { miniatureId } = useParams();
+  // set up navigation
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,6 +45,7 @@ export const MiniatureDetails = () => {
     );
 
     if (userConfirm) {
+      // deletes the currently selected miniature and takes users back to their collection
       deleteMiniature(miniature.id).then(() => {
         navigate("/vault");
       });

@@ -9,6 +9,7 @@ import { addNewMiniature } from "../../services/miniatureService";
 import { useNavigate } from "react-router-dom";
 
 export const AddANewMiniature = ({ currentUser }) => {
+  // set state for each property of miniature object
   const [name, setName] = useState("");
   const [classes, setClasses] = useState([]);
   const [species, setSpecies] = useState([]);
@@ -33,6 +34,7 @@ export const AddANewMiniature = ({ currentUser }) => {
     setSelectedSize(event.target.value);
   };
 
+  // Fetch size, species, and classes
   useEffect(() => {
     getAllSizes().then((sizesArray) => {
       setSizes(sizesArray);
@@ -57,6 +59,7 @@ export const AddANewMiniature = ({ currentUser }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // create a new miniature object
     const miniatureToSubmit = {
       userId: currentUser.id,
       name: name,
@@ -68,6 +71,7 @@ export const AddANewMiniature = ({ currentUser }) => {
       img_url: img,
     };
 
+    // function to add miniature to the database and then resets the form.
     addNewMiniature(miniatureToSubmit).then((newMiniature) => {
       setName("");
       setSelectedClass("All");
@@ -77,6 +81,7 @@ export const AddANewMiniature = ({ currentUser }) => {
       setImg("");
       setDateAcquired("");
 
+      // takes user to the new miniatures detail page
       navigate(`/vault/${newMiniature.id}`);
     });
   };

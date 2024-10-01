@@ -1,6 +1,7 @@
 import "./filter.css";
 
 export const SpeciesFilter = ({
+  // Dropdown of all Species
   handleSpeciesChange,
   selectedSpecies,
   species,

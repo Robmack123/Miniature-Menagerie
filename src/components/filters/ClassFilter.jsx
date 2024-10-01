@@ -1,4 +1,5 @@
 export const ClassFilter = ({ handleClassChange, selectedClass, classes }) => {
+  // Dropdown of all classes
   return (
     <select
       className="filter-bar"

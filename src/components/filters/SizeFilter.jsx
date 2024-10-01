@@ -1,4 +1,5 @@
 export const SizeFilter = ({ handleSizeChange, selectedSize, sizes }) => {
+  // Dropdown of all Sizes
   return (
     <select
       className="filter-bar"

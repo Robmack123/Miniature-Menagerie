@@ -1,4 +1,5 @@
 export const PaintedFilter = ({ showPainted, togglePaintedFilter }) => {
+  // Paint checkbox
   return (
     <label>
       <input

@@ -12,6 +12,7 @@ import "../filters/filter.css";
 import { PaintedFilter } from "../filters/PaintedFilter";
 
 export const TheVault = ({ currentUser }) => {
+  // sets state for the users miniatures and the states for the things to filter by
   const [miniatures, setMiniatures] = useState([]);
   const [classes, setClasses] = useState([]);
   const [species, setSpecies] = useState([]);

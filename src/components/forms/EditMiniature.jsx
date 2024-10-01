@@ -13,8 +13,10 @@ import { SpeciesFilter } from "../filters/SpeciesFilter";
 import "./forms.css";
 
 export const EditMiniature = () => {
+  // sets states for the current miniature object and the edited miniature object
   const [currentMiniature, setCurrentMiniature] = useState({});
   const [editedMiniature, setEditedMiniature] = useState({});
+  // sets states for object properties
   const [name, setName] = useState("");
   const [classes, setClasses] = useState([]);
   const [species, setSpecies] = useState([]);
@@ -25,8 +27,9 @@ export const EditMiniature = () => {
   const [selectedClass, setSelectedClass] = useState("All");
   const [selectedSpecies, setSelectedSpecies] = useState("All");
   const [selectedSize, setSelectedSize] = useState("All");
+  // used to get the miniatureId from the url
   const { miniatureId } = useParams();
-
+  // set up navigation
   const navigate = useNavigate();
 
   const handleClassChange = (event) => {
@@ -41,6 +44,7 @@ export const EditMiniature = () => {
     setSelectedSize(event.target.value);
   };
 
+  // gets the current miniature that is being edited
   useEffect(() => {
     getMiniatureById(miniatureId).then((miniature) => {
       setCurrentMiniature(miniature);
@@ -76,6 +80,7 @@ export const EditMiniature = () => {
     });
   }, []);
 
+  //makes a copy of the miniature object
   useEffect(() => {
     const miniatureCopy = {
       id: currentMiniature.id,
@@ -104,8 +109,9 @@ export const EditMiniature = () => {
       painted: painted,
       img_url: img,
     };
-
+    //PUT request to update database with the edited miniature
     editMiniatureObj(updatedMiniature).then(() => {
+      // takes user to the updated miniatures details
       navigate(`/vault/${miniatureId}`);
     });
   };
