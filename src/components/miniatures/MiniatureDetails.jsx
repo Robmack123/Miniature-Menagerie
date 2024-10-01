@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
-import { getMiniatureById } from "../../services/miniatureService";
-import { Link, useParams } from "react-router-dom";
+import {
+  deleteMiniature,
+  getMiniatureById,
+} from "../../services/miniatureService";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Miniature } from "./Miniature";
 import { getSizeById } from "../../services/sizesService";
 import { getClassById } from "../../services/classesService";
@@ -13,6 +16,7 @@ export const MiniatureDetails = () => {
   const [species, setSpecies] = useState("");
   const [size, setSize] = useState("");
   const { miniatureId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getMiniatureById(miniatureId).then((data) => {
@@ -32,6 +36,18 @@ export const MiniatureDetails = () => {
     });
   }, [miniatureId]);
 
+  const handleDeleteClick = () => {
+    const userConfirm = window.confirm(
+      "Are you sure you want to delete this miniature?"
+    );
+
+    if (userConfirm) {
+      deleteMiniature(miniature.id).then(() => {
+        navigate("/vault");
+      });
+    }
+  };
+
   return (
     <div className="details-container">
       <div className="miniature-wrapper">
@@ -40,7 +56,7 @@ export const MiniatureDetails = () => {
           <Link to={`/vault/${miniature.id}/edit`}>
             <button className="btn">Edit</button>
           </Link>
-          <button>Delete</button>
+          <button onClick={handleDeleteClick}>Delete</button>
         </div>
       </div>
       <div className="details-wrapper">
