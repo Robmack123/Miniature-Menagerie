@@ -1,0 +1,30 @@
+.edit-page {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  border: 1px solid black;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.edit-field {
+  border: 1px solid black;
+  margin-right: 5rem;
+  border-radius: 1rem;
+}
+
+.img-container {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+
+.img {
+  border-radius: 1rem;
+}
+
+.title {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}

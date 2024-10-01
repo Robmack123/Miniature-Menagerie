@@ -10,6 +10,7 @@ import { getAllSizes } from "../../services/sizesService";
 import { SizeFilter } from "../filters/SizeFilter";
 import { ClassFilter } from "../filters/ClassFilter";
 import { SpeciesFilter } from "../filters/SpeciesFilter";
+import "./forms.css";
 
 export const EditMiniature = () => {
   const [currentMiniature, setCurrentMiniature] = useState({});
@@ -109,8 +110,11 @@ export const EditMiniature = () => {
   };
 
   return (
-    <div>
-      <div className="Edit field">
+    <div className="edit-page">
+      <div className="edit-field">
+        <header className="title">
+          <h1>Edit Miniature</h1>
+        </header>
         <fieldset>
           <label>
             Name:{" "}
@@ -184,13 +188,14 @@ export const EditMiniature = () => {
           </div>
         </fieldset>
       </div>
-      <div>
+      <div className="img-container">
         <div>
           {img && (
             <img
+              className="img"
               src={img}
               alt={name}
-              style={{ width: "200px", height: "auto" }}
+              style={{ width: "300px", height: "300px" }}
             />
           )}
         </div>
