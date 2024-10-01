@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  editMiniatureObj,
-  getMiniatureById,
-} from "../../services/miniatureService";
+import { getMiniatureById } from "../../services/miniatureService";
 import { useNavigate, useParams } from "react-router-dom";
 import { getAllClasses } from "../../services/classesService";
 import { getAllSpecies } from "../../services/speciesService";
@@ -11,6 +8,7 @@ import { SizeFilter } from "../filters/SizeFilter";
 import { ClassFilter } from "../filters/ClassFilter";
 import { SpeciesFilter } from "../filters/SpeciesFilter";
 import "./forms.css";
+import { editMiniatureObj } from "../../services/formService";
 
 export const EditMiniature = () => {
   // sets states for the current miniature object and the edited miniature object

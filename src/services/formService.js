@@ -8,11 +8,12 @@ export const addNewMiniature = (miniature) => {
   }).then((res) => res.json());
 };
 
-export const deleteMiniature = (miniatureId) => {
-  return fetch(`http://localhost:8088/miniatures/${miniatureId}`, {
-    method: "DELETE",
+export const editMiniatureObj = (miniature) => {
+  return fetch(`http://localhost:8088/miniatures/${miniature.id}`, {
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
-  });
+    body: JSON.stringify(miniature),
+  }).then((res) => res.json());
 };
