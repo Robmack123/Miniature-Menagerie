@@ -24,7 +24,9 @@ export const TheVault = ({ currentUser }) => {
 
   const filteredMiniatures = miniatures.filter((miniature) => {
     return (
+      // shows only the users current miniatures
       miniature.userId === currentUser.id &&
+      //filters class, size, and species and checks whether the id matches the selected option
       (selectedClass === "All" ||
         miniature.classId === parseInt(selectedClass)) &&
       (selectedSpecies === "All" ||
@@ -33,7 +35,7 @@ export const TheVault = ({ currentUser }) => {
       (!showPainted || miniature.painted === false)
     );
   });
-
+  // handles the changes of the dropdown menus and changes the set state to the one chosen
   const handleClassChange = (event) => {
     setSelectedClass(event.target.value);
   };
@@ -50,6 +52,7 @@ export const TheVault = ({ currentUser }) => {
     setShowPainted((prev) => !prev);
   };
 
+  // gets all the sizes, species, classes, and miniatures from the database
   useEffect(() => {
     getAllSizes().then((sizesArray) => {
       setSizes(sizesArray);
@@ -81,6 +84,7 @@ export const TheVault = ({ currentUser }) => {
     <div>
       <div className="filter-container">
         <div className="filter-bar">
+          {/* Size dropdown */}
           <SizeFilter
             handleSizeChange={handleSizeChange}
             selectedSize={selectedSize}
@@ -88,6 +92,7 @@ export const TheVault = ({ currentUser }) => {
           />
         </div>
         <div className="filter-bar">
+          {/* species dropdown */}
           <SpeciesFilter
             handleSpeciesChange={handleSpeciesChange}
             selectedSpecies={selectedSpecies}
@@ -95,6 +100,7 @@ export const TheVault = ({ currentUser }) => {
           />
         </div>
         <div className="filter-bar">
+          {/* class dropdown */}
           <ClassFilter
             handleClassChange={handleClassChange}
             selectedClass={selectedClass}
@@ -102,6 +108,7 @@ export const TheVault = ({ currentUser }) => {
           />
         </div>
         <div className="filter-bar">
+          {/* painted button */}
           <PaintedFilter
             showPainted={showPainted}
             togglePaintedFilter={togglePaintedFilter}
@@ -109,6 +116,7 @@ export const TheVault = ({ currentUser }) => {
         </div>
       </div>
       <div className="miniature-list">
+        {/* renders all the users miniatures */}
         {filteredMiniatures.map((miniature) => (
           <Miniature key={miniature.id} miniature={miniature} />
         ))}

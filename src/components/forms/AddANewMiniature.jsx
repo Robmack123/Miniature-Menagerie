@@ -5,7 +5,7 @@ import { getAllClasses } from "../../services/classesService";
 import { SizeFilter } from "../filters/SizeFilter";
 import { SpeciesFilter } from "../filters/SpeciesFilter";
 import { ClassFilter } from "../filters/ClassFilter";
-import { addNewMiniature } from "../../services/miniatureService";
+import { addNewMiniature } from "../../services/formService";
 import { useNavigate } from "react-router-dom";
 
 export const AddANewMiniature = ({ currentUser }) => {
