@@ -1,28 +1,30 @@
 .miniature-list {
   display: flex;
-  flex-wrap: wrap; /* Allows wrapping to multiple rows */
-  justify-content: flex-start; /* Aligns miniatures to the start, preventing uneven spacing */
-  gap: 20px; /* Adds space between miniatures */
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
   padding: 10px;
-  margin-left: 12rem;
+  margin-left: 10rem;
 }
 
 .miniature-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: calc(
-    100% / 6 - 20px
-  ); /* Ensure 6 miniatures per row, adjusting for the gap */
-  padding: 1rem;
-  margin-bottom: 20px; /* Adds space between rows */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow effect for styling */
-  border-radius: 1rem;
+  width: 200px;
+  padding: 0.8rem;
+  margin-bottom: 15px;
+  background-image: url("https://www.transparenttextures.com/patterns/tileable-wood-colored.png");
+  background-size: cover;
+  background-repeat: repeat;
+  border: 5px solid #8b4513;
+  border-radius: 12px;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .miniature-container img {
-  width: 250px;
-  height: 400px;
+  width: 200px;
+  height: 320px;
   object-fit: cover;
-  border-radius: 1rem;
+  border-radius: 5px;
 }

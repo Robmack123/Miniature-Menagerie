@@ -5,4 +5,11 @@
   gap: 50px;
 }
 .filter-bar {
+  background-image: url("/filter_background_2.webp");
+  border: 2px solid #6d4c41;
+  font-family: "Cinzel", serif;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #6d4c41;
 }
