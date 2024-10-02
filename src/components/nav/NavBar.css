@@ -16,8 +16,15 @@
 
 .navbar-link {
   text-decoration: none;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Cinzel", serif;
   letter-spacing: 1px;
+  color: black; /* Change the color to black */
+  font-size: 1.2rem; /* Increase the font size */
+}
+
+.navbar-link:visited,
+.navbar-link:active {
+  color: black; /* Ensure the color stays black after the link is visited or active */
 }
 
 .navbar-logout {
@@ -25,5 +32,5 @@
 }
 
 .navbar-link:hover {
-  color: var(--primary);
+  color: var(--primary); /* Hover effect remains the same */
 }

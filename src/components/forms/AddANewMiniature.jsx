@@ -90,7 +90,7 @@ export const AddANewMiniature = ({ currentUser }) => {
     <div className="edit-page">
       <div className="edit-field">
         <header className="title">
-          <h1>Edit Miniature</h1>
+          <h1>Add a Miniature</h1>
         </header>
         <fieldset>
           <label>

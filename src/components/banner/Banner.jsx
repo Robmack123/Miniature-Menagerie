@@ -4,7 +4,6 @@ export const Banner = () => {
   const navigate = useNavigate();
 
   const handleNavClick = () => {
-    // Navigates to the home page when clicked
     navigate("/");
   };
 
