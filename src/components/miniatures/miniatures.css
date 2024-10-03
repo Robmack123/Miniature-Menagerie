@@ -1,0 +1,72 @@
+.miniature-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 10px;
+  margin-left: 10rem;
+}
+
+.miniature-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  padding: 0.8rem;
+  margin-bottom: 15px;
+  background-image: url("https://www.transparenttextures.com/patterns/tileable-wood-colored.png");
+  background-size: cover;
+  background-repeat: repeat;
+  border: 5px solid #8b4513;
+  border-radius: 12px;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.miniature-container:hover {
+  transform: scale(1.05);
+}
+
+.miniature-container img {
+  width: 200px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.miniature-container:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+.miniature-container.no-hover:hover {
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .miniature-list {
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  .miniature-container {
+    width: 150px;
+    padding: 0.5rem;
+  }
+
+  .miniature-container img {
+    width: 150px;
+    height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .miniature-container {
+    width: 200px;
+  }
+
+  .miniature-container img {
+    width: 120px;
+    height: 200px;
+  }
+}
