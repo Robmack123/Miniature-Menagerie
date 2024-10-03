@@ -59,6 +59,19 @@ export const AddANewMiniature = ({ currentUser }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // check to make sure all fields are filled out
+    if (
+      !name ||
+      selectedClass === "All" ||
+      selectedSize === "All" ||
+      selectedSpecies === "All" ||
+      !dateAcquired ||
+      !img
+    ) {
+      alert("Please fill out all fields before submitting");
+      return;
+    }
+
     // create a new miniature object
     const miniatureToSubmit = {
       userId: currentUser.id,
@@ -165,7 +178,7 @@ export const AddANewMiniature = ({ currentUser }) => {
           </div>
         </fieldset>
       </div>
-      {/* <div className="img-container">
+      <div className="img-container">
         <div>
           {img && (
             <img
@@ -176,7 +189,7 @@ export const AddANewMiniature = ({ currentUser }) => {
             />
           )}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 .navbar {
   display: flex;
-  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
   background-color: var(--dark);
   margin: 0;
   width: 100%;
@@ -8,10 +9,10 @@
 }
 
 .navbar-item {
-  flex-basis: 20%;
   list-style-type: none;
   text-align: center;
   color: var(--offWhite);
+  flex-grow: 1;
 }
 
 .navbar-link {
@@ -19,7 +20,7 @@
   font-family: "Cinzel", serif;
   letter-spacing: 1px;
   color: black;
-  font-size: 1.2rem;
+  font-size: 2rem;
 }
 
 .navbar-link:visited,
@@ -27,10 +28,32 @@
   color: black;
 }
 
-.navbar-logout {
-  margin-left: auto;
-}
-
 .navbar-link:hover {
   color: var(--primary);
+}
+
+.navbar-logout {
+  margin-left: 0;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .navbar-item {
+    flex-basis: 100%;
+    margin-bottom: 10px;
+  }
+
+  .navbar-link {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-link {
+    font-size: 1.2rem;
+  }
 }

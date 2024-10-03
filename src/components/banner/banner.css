@@ -2,3 +2,22 @@
   display: flex;
   justify-content: center;
 }
+
+/* For mobile devices with screen width less than 768px */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header img {
+    width: 80%;
+  }
+}
+
+/* For very small screens (mobile phones) less than 480px */
+@media (max-width: 480px) {
+  .header img {
+    width: 100%;
+  }
+}

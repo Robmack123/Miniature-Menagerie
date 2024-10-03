@@ -3,7 +3,7 @@ import "./miniatures.css";
 
 export const Miniature = ({ miniature, disableLink }) => {
   return (
-    <div className="miniature-container">
+    <div className={`miniature-container ${disableLink ? "no-hover" : ""}`}>
       <h1>{miniature.name}</h1>
       <div>
         {disableLink ? (
