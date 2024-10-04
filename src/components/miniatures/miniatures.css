@@ -4,7 +4,7 @@
   justify-content: flex-start;
   gap: 20px;
   padding: 10px;
-  margin-left: 10rem;
+  margin-left: 06rem;
 }
 
 .miniature-container {
@@ -41,6 +41,27 @@
 
 .miniature-container.no-hover:hover {
   transform: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: #8b4513;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
 }
 
 @media (max-width: 768px) {

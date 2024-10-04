@@ -22,6 +22,9 @@ export const TheVault = ({ currentUser }) => {
   const [selectedSize, setSelectedSize] = useState("All");
   const [showPainted, setShowPainted] = useState(false);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const miniaturesPerPage = 3;
+
   const filteredMiniatures = miniatures.filter((miniature) => {
     return (
       // shows only the users current miniatures
@@ -35,6 +38,15 @@ export const TheVault = ({ currentUser }) => {
       (!showPainted || miniature.painted === false)
     );
   });
+
+  const indexOfLastMiniature = currentPage * miniaturesPerPage;
+  const indexOfFirstMiniature = indexOfLastMiniature - miniaturesPerPage;
+  const currentMiniatures = filteredMiniatures.slice(
+    indexOfFirstMiniature,
+    indexOfLastMiniature
+  );
+  const totalPages = Math.ceil(filteredMiniatures.length / miniaturesPerPage);
+
   // handles the changes of the dropdown menus and changes the set state to the one chosen
   const handleClassChange = (event) => {
     setSelectedClass(event.target.value);
@@ -80,6 +92,18 @@ export const TheVault = ({ currentUser }) => {
     });
   }, []);
 
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
   return (
     <div>
       <div className="filter-container">
@@ -117,9 +141,23 @@ export const TheVault = ({ currentUser }) => {
       </div>
       <div className="miniature-list">
         {/* renders all the users miniatures */}
-        {filteredMiniatures.map((miniature) => (
+        {currentMiniatures.map((miniature) => (
           <Miniature key={miniature.id} miniature={miniature} />
         ))}
+      </div>
+      <div>
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <button
+          onClick={handleNextPage}
+          disabled={
+            currentPage ===
+            Math.ceil(filteredMiniatures.length / miniaturesPerPage)
+          }
+        >
+          Next
+        </button>
       </div>
     </div>
   );
