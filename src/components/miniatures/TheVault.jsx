@@ -10,6 +10,7 @@ import { SizeFilter } from "../filters/SizeFilter";
 import "./miniatures.css";
 import "../filters/filter.css";
 import { PaintedFilter } from "../filters/PaintedFilter";
+import Fuse from "fuse.js";
 
 export const TheVault = ({ currentUser }) => {
   // sets state for the users miniatures and the states for the things to filter by
@@ -21,15 +22,22 @@ export const TheVault = ({ currentUser }) => {
   const [selectedSpecies, setSelectedSpecies] = useState("All");
   const [selectedSize, setSelectedSize] = useState("All");
   const [showPainted, setShowPainted] = useState(false);
-
+  const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const miniaturesPerPage = 3;
+  const miniaturesPerPage = 12;
 
-  const filteredMiniatures = miniatures.filter((miniature) => {
+  const fuse = new Fuse(miniatures, {
+    keys: ["name"],
+    threshold: 0.3,
+  });
+
+  const filteredMiniatures = searchTerm
+    ? fuse.search(searchTerm).map(({ item }) => item)
+    : miniatures;
+
+  const finalFilteredMiniatures = filteredMiniatures.filter((miniature) => {
     return (
-      // shows only the users current miniatures
       miniature.userId === currentUser.id &&
-      //filters class, size, and species and checks whether the id matches the selected option
       (selectedClass === "All" ||
         miniature.classId === parseInt(selectedClass)) &&
       (selectedSpecies === "All" ||
@@ -41,7 +49,7 @@ export const TheVault = ({ currentUser }) => {
 
   const indexOfLastMiniature = currentPage * miniaturesPerPage;
   const indexOfFirstMiniature = indexOfLastMiniature - miniaturesPerPage;
-  const currentMiniatures = filteredMiniatures.slice(
+  const currentMiniatures = finalFilteredMiniatures.slice(
     indexOfFirstMiniature,
     indexOfLastMiniature
   );
@@ -64,6 +72,17 @@ export const TheVault = ({ currentUser }) => {
     setShowPainted((prev) => !prev);
   };
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const resetFilters = () => {
+    setSelectedClass("All");
+    setSelectedSpecies("All");
+    setSelectedSize("All");
+    setShowPainted(false);
+    setSearchTerm("");
+  };
   // gets all the sizes, species, classes, and miniatures from the database
   useEffect(() => {
     getAllSizes().then((sizesArray) => {
@@ -138,6 +157,17 @@ export const TheVault = ({ currentUser }) => {
             togglePaintedFilter={togglePaintedFilter}
           />
         </div>
+        <div className="btn-container">
+          <button onClick={resetFilters}>Reset</button>
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Search by name..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </div>
       </div>
       <div className="miniature-list">
         {/* renders all the users miniatures */}
@@ -145,7 +175,7 @@ export const TheVault = ({ currentUser }) => {
           <Miniature key={miniature.id} miniature={miniature} />
         ))}
       </div>
-      <div>
+      <div className="pagination">
         <button onClick={handlePreviousPage} disabled={currentPage === 1}>
           Previous
         </button>
