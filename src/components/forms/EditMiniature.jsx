@@ -124,6 +124,7 @@ export const EditMiniature = () => {
           <label>
             Name:{" "}
             <input
+              className="text-edit"
               type="text"
               value={name}
               onChange={(event) => setName(event.target.value)}
@@ -161,6 +162,7 @@ export const EditMiniature = () => {
           <label>
             Date Acquired:
             <input
+              className="text-edit"
               type="date"
               value={dateAcquired}
               onChange={(event) => setDateAcquired(event.target.value)}
@@ -181,6 +183,7 @@ export const EditMiniature = () => {
           <label>
             Image Url:
             <input
+              className="text-edit"
               type="text"
               value={img}
               onChange={(event) => setImg(event.target.value)}
@@ -188,7 +191,7 @@ export const EditMiniature = () => {
           </label>
         </fieldset>
         <fieldset>
-          <div>
+          <div className="btn-container">
             <button onClick={handleSubmit}>Submit</button>
           </div>
         </fieldset>
