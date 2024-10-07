@@ -160,7 +160,7 @@ export const TheVault = ({ currentUser }) => {
         <div className="btn-container">
           <button onClick={resetFilters}>Reset</button>
         </div>
-        <div>
+        <div className="search-container">
           <input
             type="text"
             placeholder="Search by name..."
