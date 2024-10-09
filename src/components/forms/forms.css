@@ -11,7 +11,7 @@
 }
 
 .edit-field {
-  border: 1px solid black;
+  border: 9px solid #8b4513;
   padding: 1rem;
   border-radius: 1rem;
   flex: 1 1 400px;
@@ -39,6 +39,9 @@
   display: flex;
   justify-content: center;
   font-size: 1.5rem;
+}
+.text-edit {
+  border: 1.4px solid #8b4513;
 }
 
 @media (max-width: 768px) {

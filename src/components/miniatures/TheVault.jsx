@@ -10,6 +10,7 @@ import { SizeFilter } from "../filters/SizeFilter";
 import "./miniatures.css";
 import "../filters/filter.css";
 import { PaintedFilter } from "../filters/PaintedFilter";
+import Fuse from "fuse.js";
 
 export const TheVault = ({ currentUser }) => {
   // sets state for the users miniatures and the states for the things to filter by
@@ -21,12 +22,22 @@ export const TheVault = ({ currentUser }) => {
   const [selectedSpecies, setSelectedSpecies] = useState("All");
   const [selectedSize, setSelectedSize] = useState("All");
   const [showPainted, setShowPainted] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const miniaturesPerPage = 12;
 
-  const filteredMiniatures = miniatures.filter((miniature) => {
+  const fuse = new Fuse(miniatures, {
+    keys: ["name"],
+    threshold: 0.3,
+  });
+
+  const filteredMiniatures = searchTerm
+    ? fuse.search(searchTerm).map(({ item }) => item)
+    : miniatures;
+
+  const finalFilteredMiniatures = filteredMiniatures.filter((miniature) => {
     return (
-      // shows only the users current miniatures
       miniature.userId === currentUser.id &&
-      //filters class, size, and species and checks whether the id matches the selected option
       (selectedClass === "All" ||
         miniature.classId === parseInt(selectedClass)) &&
       (selectedSpecies === "All" ||
@@ -35,23 +46,48 @@ export const TheVault = ({ currentUser }) => {
       (!showPainted || miniature.painted === false)
     );
   });
+
+  const indexOfLastMiniature = currentPage * miniaturesPerPage;
+  const indexOfFirstMiniature = indexOfLastMiniature - miniaturesPerPage;
+  const currentMiniatures = finalFilteredMiniatures.slice(
+    indexOfFirstMiniature,
+    indexOfLastMiniature
+  );
+  const totalPages = Math.ceil(filteredMiniatures.length / miniaturesPerPage);
+
   // handles the changes of the dropdown menus and changes the set state to the one chosen
   const handleClassChange = (event) => {
     setSelectedClass(event.target.value);
+    setCurrentPage(1);
   };
 
   const handleSpeciesChange = (event) => {
     setSelectedSpecies(event.target.value);
+    setCurrentPage(1);
   };
 
   const handleSizeChange = (event) => {
     setSelectedSize(event.target.value);
+    setCurrentPage(1);
   };
 
   const togglePaintedFilter = () => {
     setShowPainted((prev) => !prev);
+    setCurrentPage(1);
   };
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+    setCurrentPage(1);
+  };
+
+  const resetFilters = () => {
+    setSelectedClass("All");
+    setSelectedSpecies("All");
+    setSelectedSize("All");
+    setShowPainted(false);
+    setSearchTerm("");
+  };
   // gets all the sizes, species, classes, and miniatures from the database
   useEffect(() => {
     getAllSizes().then((sizesArray) => {
@@ -79,6 +115,18 @@ export const TheVault = ({ currentUser }) => {
       console.log("minis set");
     });
   }, []);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
 
   return (
     <div>
@@ -114,12 +162,37 @@ export const TheVault = ({ currentUser }) => {
             togglePaintedFilter={togglePaintedFilter}
           />
         </div>
+        <div className="btn-container">
+          <button onClick={resetFilters}>Reset</button>
+        </div>
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search by name..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </div>
       </div>
       <div className="miniature-list">
         {/* renders all the users miniatures */}
-        {filteredMiniatures.map((miniature) => (
+        {currentMiniatures.map((miniature) => (
           <Miniature key={miniature.id} miniature={miniature} />
         ))}
+      </div>
+      <div className="pagination">
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <button
+          onClick={handleNextPage}
+          disabled={
+            currentPage ===
+            Math.ceil(filteredMiniatures.length / miniaturesPerPage)
+          }
+        >
+          Next
+        </button>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@
   justify-content: flex-start;
   gap: 20px;
   padding: 10px;
-  margin-left: 10rem;
+  margin-left: 06rem;
 }
 
 .miniature-container {
@@ -41,6 +41,45 @@
 
 .miniature-container.no-hover:hover {
   transform: none;
+}
+
+.btn-container button {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  background-color: #884513;
+  border: 2px solid #5d4037;
+  padding: 10px 20px;
+  color: white;
+  font-family: "Cinzel", serif;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-container button:hover {
+  background-color: #a0522d;
+  box-shadow: 0 0 10px #ffd700;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 10px 20px;
+  margin: 0 5px 10px;
+  background-color: #8b4513;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
 }
 
 @media (max-width: 768px) {

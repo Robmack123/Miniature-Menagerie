@@ -109,6 +109,7 @@ export const AddANewMiniature = ({ currentUser }) => {
           <label>
             Name:{" "}
             <input
+              className="text-edit"
               type="text"
               value={name}
               onChange={(event) => setName(event.target.value)}
@@ -146,6 +147,7 @@ export const AddANewMiniature = ({ currentUser }) => {
           <label>
             Date Acquired:
             <input
+              className="text-edit"
               type="date"
               value={dateAcquired}
               onChange={(event) => setDateAcquired(event.target.value)}
@@ -166,6 +168,7 @@ export const AddANewMiniature = ({ currentUser }) => {
           <label>
             Image Url:
             <input
+              className="text-edit"
               type="text"
               value={img}
               onChange={(event) => setImg(event.target.value)}
