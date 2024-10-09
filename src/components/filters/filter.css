@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: center;
   gap: 50px;
+  margin-bottom: 15px;
 }
 .filter-bar {
   background-image: url("/filter_background_2.webp");
@@ -20,7 +21,7 @@
   display: flex;
   justify-content: center;
   margin-top: 1rem;
-  border: 1rem solid #8b4513;
+  border: 1.2px solid #8b4513;
 }
 
 .search-input {

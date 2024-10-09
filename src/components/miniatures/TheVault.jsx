@@ -58,22 +58,27 @@ export const TheVault = ({ currentUser }) => {
   // handles the changes of the dropdown menus and changes the set state to the one chosen
   const handleClassChange = (event) => {
     setSelectedClass(event.target.value);
+    setCurrentPage(1);
   };
 
   const handleSpeciesChange = (event) => {
     setSelectedSpecies(event.target.value);
+    setCurrentPage(1);
   };
 
   const handleSizeChange = (event) => {
     setSelectedSize(event.target.value);
+    setCurrentPage(1);
   };
 
   const togglePaintedFilter = () => {
     setShowPainted((prev) => !prev);
+    setCurrentPage(1);
   };
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
+    setCurrentPage(1);
   };
 
   const resetFilters = () => {

@@ -55,7 +55,11 @@ export const MiniatureDetails = () => {
   return (
     <div className="details-container">
       <div className="miniature-wrapper">
-        <Miniature miniature={miniature} disableLink={true} />
+        <Miniature
+          miniature={miniature}
+          disableLink={true}
+          customClass="miniature-details-size"
+        />
         <div className="btn-container">
           <Link to={`/vault/${miniature.id}/edit`}>
             <button className="btn">Edit</button>
