@@ -16,6 +16,11 @@ export const NavBar = () => {
           Add a Miniature
         </Link>
       </li>
+      <li className="navbar-item">
+        <Link className="navbar-link" to="battle">
+          Battle Tracker
+        </Link>
+      </li>
       {localStorage.getItem("mini_user") ? (
         <li className="navbar-item navbar-logout">
           <Link
