@@ -19,6 +19,16 @@
 
 ---
 
+---
+
+## **Purpose**
+
+I developed this application because I wanted an easier way to keep track of my growing miniature collection, as well as my friends'. As our collections expanded, it became a hassle to remember everything we had, especially when planning tabletop RPG sessions. The app is meant to make things more efficient by helping users organize their miniatures and quickly figure out which ones they want to use in their games.
+
+It’s particularly helpful for anyone with a large collection who doesn’t want to dig through everything just to find the right miniatures for a session. With features like filters for species, class, and paint status, plus a battle tracker to organize combat encounters, the app simplifies the whole process of prepping for a game and managing miniatures.
+
+---
+
 ## **Features**
 
 - User authentication with unique user vaults.
