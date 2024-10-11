@@ -19,8 +19,6 @@
 
 ---
 
----
-
 ## **Purpose**
 
 I developed this application because I wanted an easier way to keep track of my growing miniature collection, as well as my friends'. As our collections expanded, it became a hassle to remember everything we had, especially when planning tabletop RPG sessions. The app is meant to make things more efficient by helping users organize their miniatures and quickly figure out which ones they want to use in their games.
