@@ -60,34 +60,46 @@
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/miniature-menagerie.git
+   git clone https://github.com/Robmack123/Miniature-Menagerie
    ```
 
-2. **Navigate to the project directory**:
+2. **Clone the Mock Database**:
+
+   ```bash
+   git clone https://github.com/Robmack123/Mini-api
+   ```
+
+3. **Navigate to the project directory**:
 
    ```bash
    cd miniature-menagerie
    ```
 
-3. **Install the dependencies**:
+4. **Navigate to the project mock database**:
+
+   ```bash
+   cd mini-api
+   ```
+
+5. **Install the dependencies**:
 
    ```bash
    npm install
    ```
 
-4. **Start the JSON Server (Mock API)**:
+6. **Start the JSON Server (Mock API)**:
 
    ```bash
-   npm run server
+   json.server database.json -p 8088
    ```
 
-5. **Start the React development server**:
+7. **Start the React development server**:
 
    ```bash
-   npm start
+   npm run dev
    ```
 
-6. The application will run on `http://localhost:3000`, and the JSON Server will run on `http://localhost:8088`.
+8. The application will run on `http://localhost:5173`, and the JSON Server will run on `http://localhost:8088`.
 
 ---
 
