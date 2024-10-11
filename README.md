@@ -115,26 +115,26 @@
 
 ## **Screenshots**
 
-Include a few screenshots here showcasing key parts of your project such as:
-
 - Homepage
   ![alt text](image.png)
 - Vault page with filters
 
-   ![MiniatureMenagerie-GoogleChrome2024-10-1111-45-32-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/04f905c2-8d4b-4a6b-84cb-e1c74cad785f)
+   ![ScreenRecording2024-10-11131629-ezgif com-video-to-gif-converter (1)](https://github.com/user-attachments/assets/9c450f3e-3676-46d2-9bf7-7dd6dda6ed45)
 
 - Add miniature form
 
-   ![MiniatureMenagerie-GoogleChrome2024-10-1111-55-21-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/e8c2d81f-e586-431c-b404-7c7eb92eff61)
-  
+   ![ScreenRecording2024-10-11132225-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/ff9023b8-be2c-41b6-a198-acac8eecdff5)
+
 - Edit miniature form
   
-   ![MiniatureMenagerie-GoogleChrome2024-10-1111-45-32-ezgif com-video-to-gif-converter (1)](https://github.com/user-attachments/assets/b288a5c7-a842-407d-a3e7-f8781752b45d)
-  
+   
+   ![ScreenRecording2024-10-11133221-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/66d13aac-6fc5-4e86-8138-636f2b590c34)
+
 
 ---
 
 ## **Future Enhancements**
 
 - Allow users to upload custom images for miniatures instead of using URLs.
+- Allow users to be able to use create custom classes and species.
 
