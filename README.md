@@ -121,7 +121,7 @@ Include a few screenshots here showcasing key parts of your project such as:
   ![alt text](image.png)
 - Vault page with filters
 
- ![MiniatureMenagerie-GoogleChrome2024-10-1111-45-32-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/04f905c2-8d4b-4a6b-84cb-e1c74cad785f)
+   ![MiniatureMenagerie-GoogleChrome2024-10-1111-45-32-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/04f905c2-8d4b-4a6b-84cb-e1c74cad785f)
 
 - Add miniature form
 
