@@ -118,9 +118,13 @@
 Include a few screenshots here showcasing key parts of your project such as:
 
 - Homepage
+  ![alt text](image.png)
 - Vault page with filters
+  <video controls src="The Vault.mp4" title="Title"></video>
 - Add miniature form
+  ![alt text](image-1.png)
 - Edit miniature form
+  ![alt text](image-2.png)
 - Search functionality in action
 
 ---

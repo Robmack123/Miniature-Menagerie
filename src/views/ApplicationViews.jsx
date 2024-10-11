@@ -40,7 +40,6 @@ export const ApplicationViews = () => {
           path="add"
           element={<AddANewMiniature currentUser={currentUser} />}
         />
-        <Route path="battle" element={<>Battle Tracker</>} />
       </Route>
     </Routes>
   );
