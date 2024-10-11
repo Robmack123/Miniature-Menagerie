@@ -7,6 +7,7 @@ import { Banner } from "../components/banner/Banner";
 import { MiniatureDetails } from "../components/miniatures/MiniatureDetails";
 import { EditMiniature } from "../components/forms/EditMiniature";
 import { AddANewMiniature } from "../components/forms/AddANewMiniature";
+import { BattleTracker } from "../components/tracker/BattleTracker";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -40,7 +41,10 @@ export const ApplicationViews = () => {
           path="add"
           element={<AddANewMiniature currentUser={currentUser} />}
         />
-        <Route path="battle" element={<>Battle Tracker</>} />
+        <Route
+          path="battle"
+          element={<BattleTracker currentUser={currentUser} />}
+        />
       </Route>
     </Routes>
   );
