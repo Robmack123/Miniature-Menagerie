@@ -120,18 +120,16 @@ Include a few screenshots here showcasing key parts of your project such as:
 - Homepage
   ![alt text](image.png)
 - Vault page with filters
-  <video controls src="The Vault.mp4" title="Title"></video>
+ ![MiniatureMenagerie-GoogleChrome2024-10-1111-45-32-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/04f905c2-8d4b-4a6b-84cb-e1c74cad785f)
+
 - Add miniature form
-  ![alt text](image-1.png)
+  ![MiniatureMenagerie-GoogleChrome2024-10-1111-55-21-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/e8c2d81f-e586-431c-b404-7c7eb92eff61)
 - Edit miniature form
-  ![alt text](image-2.png)
-- Search functionality in action
+   ![MiniatureMenagerie-GoogleChrome2024-10-1111-45-32-ezgif com-video-to-gif-converter (1)](https://github.com/user-attachments/assets/b288a5c7-a842-407d-a3e7-f8781752b45d)
 
 ---
 
 ## **Future Enhancements**
 
 - Allow users to upload custom images for miniatures instead of using URLs.
-- Implement user profiles with additional settings and preferences.
-- Add a feature for users to create custom tags for miniatures.
-- Introduce an option to share vaults publicly or privately with other users.
+
