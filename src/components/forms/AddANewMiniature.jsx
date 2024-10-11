@@ -38,21 +38,18 @@ export const AddANewMiniature = ({ currentUser }) => {
   useEffect(() => {
     getAllSizes().then((sizesArray) => {
       setSizes(sizesArray);
-      console.log("size set");
     });
   }, []);
 
   useEffect(() => {
     getAllSpecies().then((speciesArray) => {
       setSpecies(speciesArray);
-      console.log("species set");
     });
   }, []);
 
   useEffect(() => {
     getAllClasses().then((classesArray) => {
       setClasses(classesArray);
-      console.log("classes set");
     });
   }, []);
 
