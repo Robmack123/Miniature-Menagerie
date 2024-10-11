@@ -3,6 +3,7 @@
 ### **Table of Contents**
 
 - [Introduction](#introduction)
+- [Purpose](#purpose)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Setup and Installation](#setup-and-installation)
