@@ -173,7 +173,7 @@ export const AddANewMiniature = ({ currentUser }) => {
           </label>
         </fieldset>
         <fieldset>
-          <div>
+          <div className="btn-container">
             <button onClick={handleSubmit}>Submit</button>
           </div>
         </fieldset>

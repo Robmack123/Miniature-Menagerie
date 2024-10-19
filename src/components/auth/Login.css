@@ -10,6 +10,8 @@
 .form-login {
   width: 60%;
   margin: 2rem auto;
+  border-color: #884513;
+  border: 10px solid #884513;
 }
 
 .form-login > h1 {
@@ -28,6 +30,14 @@
 
 .login-btn {
   align-self: flex-end;
+  background-color: #884513;
+  border: 2px solid #5d4037;
+  padding: 10px 20px;
+  color: white;
+  font-family: "Cinzel", serif;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .login-btn:focus {

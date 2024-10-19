@@ -24,7 +24,7 @@ export const TheVault = ({ currentUser }) => {
   const [showPainted, setShowPainted] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const miniaturesPerPage = 12;
+  const miniaturesPerPage = 18;
 
   const fuse = new Fuse(miniatures, {
     keys: ["name"],

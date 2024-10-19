@@ -35,6 +35,10 @@
   color: #5d4037;
 }
 
+.btn-container a {
+  text-decoration: none;
+}
+
 .btn-container button {
   margin-top: 10px;
   display: flex;
@@ -46,11 +50,13 @@
   font-family: "Cinzel", serif;
   border-radius: 5px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .btn-container button:hover {
   background-color: #a0522d;
   box-shadow: 0 0 10px #ffd700;
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {
